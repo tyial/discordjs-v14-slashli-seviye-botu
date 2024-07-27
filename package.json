@@ -1,0 +1,9 @@
+{
+  "main": "App.js",
+  "scripts": {
+    "start": "node App.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3"
+  }
+}
