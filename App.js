@@ -10,6 +10,8 @@ const GuildDatas = new JsonDatabase({ databasePath: "./Database/Guilds.json" })
 require("./Utils/eventLoader.js")(client)
 require("./Utils/slashHandler.js")(client)
 
+// Botu Kullanmadan README.md dosyasını okuyun!
+
 // LevelUpdater ------------------------------------------------------------------------------------------------
 
 const { Events } = require("discord.js");
@@ -66,6 +68,8 @@ client.on(Events.MessageCreate, async (message) => {
 // };
 
 // LevelUpdater ------------------------------------------------------------------------------------------------
+
+// Botu Kullanmadan README.md dosyasını okuyun!
 
 // CrashHandler ------------------------------------------------------------------------------------------------
 process.on('unhandledRejection', (reason, p) => {
