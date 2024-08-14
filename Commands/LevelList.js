@@ -95,7 +95,7 @@ module.exports = {
               padding: 20px;
             }
       
-            .sa {
+            .firstcontainer {
               display: flex;
               align-items: center;
               justify-content: center;
@@ -129,7 +129,7 @@ module.exports = {
             }
       
             .top-three .user:nth-child(1) {
-              background-color: #FFD700; /* Altın rengi */
+              background-color: #FFD700;
               order: 2;
               width: 150px;
             }
@@ -228,7 +228,7 @@ module.exports = {
           </style>
         </head>
         <body>
-        <div class="sa">
+        <div class="firstcontainer">
           <div class="container">
             <div class="top-three">
               ${users.slice(0, 3).map((user, index) => `
@@ -341,15 +341,19 @@ module.exports = {
             margin-bottom: 20px;
           }
       
-          .top-three .user {
-            text-align: center;
-            padding: 10px;
-            margin: 0 5px;
-            border-radius: 10px;
-            background-color: #23272a;
-            border: 2px solid white;
-            background: radial-gradient(circle at bottom right, rgba(219, 219, 219, 0.5), transparent);
-          }
+        .top-three .user {
+          text-align: center;
+          padding: 10px;
+          margin: 0 5px;
+          border-radius: 10px;
+          background-color: #23272a;
+          border: 2px solid white;
+          background: radial-gradient(circle at bottom right, rgba(219, 219, 219, 0.5), transparent);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+        }
       
           .top-three .user:nth-child(1) {
             background-color: #FFD700;
@@ -445,6 +449,14 @@ module.exports = {
             margin: 2px 0;
             font-size: 14px;
           }
+
+          aquastrong {
+          color: aqua;
+          }
+
+          yellowstrong {
+          color: yellow;
+          }
       
           .ranking .rank-number {
             font-size: 24px;
@@ -455,7 +467,7 @@ module.exports = {
       
           ${users[9] ? `.bottom-center {
             display: flex;
-            justify-content: center;
+            justify-content: flex-start;
             width: 100%;
             margin-top: 10px;
           }
@@ -468,6 +480,8 @@ module.exports = {
             background-color: #23272a;
             border: 2px solid white;
             background: radial-gradient(circle at top left, rgba(21, 125, 125, 0.5), transparent);
+            width: 100%;
+            max-width: 500px;
           }
       
           .bottom-center .ranking img {
@@ -478,11 +492,7 @@ module.exports = {
             margin-right: 10px;
           }
       
-          .bottom-center .ranking.centered {
-            justify-content: center;
-          }
-      
-          .bottom-center .ranking.centered .rank-number {
+          .bottom-center .ranking .rank-number {
             margin-right: 0;
           }
       
@@ -493,7 +503,7 @@ module.exports = {
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
-            max-width: 120px;
+            max-width: 200px;
           }` : ''}
         </style>
       </head>
@@ -516,19 +526,19 @@ module.exports = {
                 <img src="${user.avatar}" alt="${user.username}">
                 <div class="info">
                   <h4>${user.username}</h4>
-                  <p>${user.level}. seviye, ${user.xp} xp</p>
+                  <p><aquastrong>${user.level}</aquastrong>. <yellowstrong>seviye</yellowstrong>, <aquastrong>${user.xp}</aquastrong> <yellowstrong>xp</yellowstrong></p>
                 </div>
               </div>
             `).join('')}
           </div>
           ${users[9] ? `
           <div class="bottom-center">
-            <div class="ranking centered">
+            <div class="ranking">
               <p class="rank-number">#10</p>
               <img src="${users[9].avatar}" alt="${users[9].username}">
               <div class="info">
                 <h4>${users[9].username}</h4>
-                <p>${users[9].level}. seviye, ${users[9].xp} xp</p>
+                <p><aquastrong>${users[9].level}</aquastrong>. <yellowstrong>seviye</yellowstrong>, <aquastrong>${users[9].xp}</aquastrong> <yellowstrong>xp</yellowstrong></p>
               </div>
             </div>
           </div>` : ''}
@@ -537,7 +547,7 @@ module.exports = {
       </html>`;
 
       await page.setContent(htmlContent);
-      await page.setViewport({ width: 550, height: 650 });
+      await page.setViewport({ width: 550, height: 675 });
       const screenshotBuffer = await page.screenshot({ omitBackground: true });
       await browser.close();
 
